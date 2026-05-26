@@ -182,7 +182,7 @@
     }
     .nav.scrolled {
       background: rgba(10, 22, 40, 0.96);
-      padding: 14px 0;
+      padding: 10px 0;
       box-shadow: 0 2px 30px rgba(0,0,0,0.4);
       backdrop-filter: blur(12px);
     }
@@ -191,11 +191,11 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .nav-logo img {
-      height: 46px;
-      filter: brightness(0) invert(1);
-      transition: opacity 0.3s;
+      height: 62px;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.45));
+      transition: opacity 0.3s, transform 0.3s var(--ease);
     }
-    .nav-logo img:hover { opacity: 0.85; }
+    .nav-logo img:hover { opacity: 0.9; transform: scale(1.03); }
     .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a {
       color: rgba(255,255,255,0.8);
@@ -623,7 +623,7 @@
       gap: 52px;
     }
     .footer-brand img {
-      height: 48px; filter: brightness(0) invert(1); margin-bottom: 22px;
+      height: 64px; filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.5)); margin-bottom: 22px;
     }
     .footer-brand p { font-size: 0.88rem; line-height: 1.85; margin-bottom: 28px; }
     .social-links { display: flex; gap: 10px; }
@@ -773,7 +773,7 @@
 <nav class="nav" id="navbar" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="Blaqrock Home">
-      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="150" height="46" />
+      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="202" height="62" />
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
@@ -1198,7 +1198,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="150" height="48" />
+      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="208" height="64" />
       <p>Premium shuttle and tour services across South Africa. We deliver comfort, reliability and class — every single journey, without exception.</p>
       <div class="social-links" aria-label="Social media links">
         <!-- PLACEHOLDER: Replace # with your actual social profile URLs -->
@@ -1238,7 +1238,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Blaqrock Shuttle &amp; Tours. All Rights Reserved.&emsp;|&emsp;Crafted with <span>✦</span> for South Africa's finest travel.</p>
+    <p>© 2026 Blaqrock Shuttle &amp; Tours. All Rights Reserved.&emsp;|&emsp;Crafted with <span>❤️</span> for South Africa's finest travel.</p>
     <span class="dev-credit">Developed by <a href="https://tishbitedigital.com" target="_blank" rel="noopener noreferrer">Tishbite Digital</a></span>
   </div>
 </footer>
