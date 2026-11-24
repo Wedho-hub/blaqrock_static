@@ -1,0 +1,13 @@
+{
+  "name": "Blaqrock Shuttle & Tours",
+  "short_name": "Blaqrock",
+  "description": "Cape Town airport transfers, private tours and corporate transport from Hout Bay.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a1628",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,5 @@
+# Blaqrock Shuttle & Tours
+User-agent: *
+Allow: /
+
+Sitemap: https://www.blaqrockshuttle.co.za/sitemap.xml
