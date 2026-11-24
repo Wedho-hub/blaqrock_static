@@ -13,15 +13,15 @@
   <meta name="theme-color" content="#0a1628" />
 
   <!-- ═══════════════════════════════ CANONICAL ═══════════════════════════════ -->
-  <link rel="canonical" href="https://www.blaqrock.co.za/" />
+  <link rel="canonical" href="https://www.blaqrockshuttle.co.za/" />
 
   <!-- ═══════════════════════════════ OPEN GRAPH ═══════════════════════════════ -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Blaqrock Shuttle &amp; Tours" />
-  <meta property="og:url" content="https://www.blaqrock.co.za/" />
+  <meta property="og:url" content="https://www.blaqrockshuttle.co.za/" />
   <meta property="og:title" content="Blaqrock Shuttle &amp; Tours | Premium Transport in South Africa" />
   <meta property="og:description" content="First-class airport transfers, corporate transport and private tours. Safe, punctual and professionally driven across South Africa." />
-  <meta property="og:image" content="https://www.blaqrock.co.za/social-preview.jpg" />
+  <meta property="og:image" content="https://www.blaqrockshuttle.co.za/social-preview.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_ZA" />
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Blaqrock Shuttle &amp; Tours | Premium Transport" />
   <meta name="twitter:description" content="First-class airport transfers, corporate transport and private tours across South Africa." />
-  <meta name="twitter:image" content="https://www.blaqrock.co.za/social-preview.jpg" />
+  <meta name="twitter:image" content="https://www.blaqrockshuttle.co.za/social-preview.jpg" />
 
   <!-- ═══════════════════════════════ GEO META ═══════════════════════════════ -->
   <meta name="geo.region" content="ZA" />
@@ -52,12 +52,12 @@
     "@context": "https://schema.org",
     "@type": "TravelAgency",
     "name": "Blaqrock Shuttle & Tours",
-    "image": "https://www.blaqrock.co.za/Blaqrock logo1 (1).png",
+    "image": "https://www.blaqrockshuttle.co.za/blaqrock-logo.png",
     "description": "Premium shuttle and tour services across South Africa. Airport transfers, corporate transport and private tours.",
-    "url": "https://www.blaqrock.co.za",
-    "telephone": "+27-00-000-0000",
-    "email": "info@blaqrock.co.za",
-    "address": { "@type": "PostalAddress", "addressCountry": "ZA" },
+    "url": "https://www.blaqrockshuttle.co.za",
+    "telephone": "+27-79-261-8265",
+    "email": "bookings@blaqrockshuttle.co.za",
+    "address": { "@type": "PostalAddress", "streetAddress": "20 Oxford Rd", "addressLocality": "Hout Bay, Cape Town", "addressRegion": "Western Cape", "addressCountry": "ZA" },
     "priceRange": "$$",
     "openingHours": "Mo-Su 00:00-24:00",
     "hasOfferCatalog": {
@@ -190,12 +190,24 @@
       max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .nav-logo img {
-      height: 62px;
-      filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.45));
-      transition: opacity 0.3s, transform 0.3s var(--ease);
+    /* Logo shown in its original brand colours on a white plate,
+       echoing the white panel + orange accent of the business card */
+    .nav-logo {
+      display: inline-flex; align-items: center;
+      background: var(--white);
+      padding: 8px 16px;
+      border-radius: 10px;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s, padding 0.4s var(--ease);
     }
-    .nav-logo img:hover { opacity: 0.9; transform: scale(1.03); }
+    .nav-logo img {
+      height: 52px; width: auto;
+      transition: height 0.4s var(--ease);
+    }
+    .nav-logo:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,114,10,0.35); }
+    .nav.scrolled .nav-logo { padding: 6px 14px; }
+    .nav.scrolled .nav-logo img { height: 42px; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a {
       color: rgba(255,255,255,0.8);
@@ -613,6 +625,19 @@
       padding: 17px; font-size: 0.85rem;
       letter-spacing: 1.5px;
     }
+    .form-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-actions .form-submit { width: 100%; justify-content: center; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff; border: none; cursor: pointer;
+      font-family: 'Poppins', sans-serif; font-weight: 600;
+      text-transform: uppercase;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5b; box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+    .form-status { font-size: 0.85rem; color: var(--gray); min-height: 1.2em; }
+    .form-status.error { color: #c0392b; }
+    @media (max-width: 520px) { .form-actions { grid-template-columns: 1fr; } }
 
     /* ═══════════ FOOTER ═══════════ */
     footer { background: var(--navy); color: rgba(255,255,255,0.5); }
@@ -623,7 +648,11 @@
       gap: 52px;
     }
     .footer-brand img {
-      height: 64px; filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.5)); margin-bottom: 22px;
+      height: 60px; width: auto; margin-bottom: 22px;
+      background: var(--white);
+      padding: 10px 18px; box-sizing: content-box;
+      border-radius: 10px;
+      border-bottom: 3px solid var(--gold);
     }
     .footer-brand p { font-size: 0.88rem; line-height: 1.85; margin-bottom: 28px; }
     .social-links { display: flex; gap: 10px; }
@@ -773,7 +802,7 @@
 <nav class="nav" id="navbar" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="Blaqrock Home">
-      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="202" height="62" />
+      <img src="blaqrock-logo.png" alt="Blaqrock Shuttle &amp; Tours" width="171" height="52" />
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
@@ -1115,24 +1144,24 @@
           <div class="contact-icon" aria-hidden="true">📞</div>
           <div class="contact-detail">
             <h4>Phone &amp; WhatsApp</h4>
-            <!-- PLACEHOLDER: Replace with your actual number -->
-            <a href="tel:+27000000000" aria-label="Call Blaqrock on +27 00 000 0000">+27 00 000 0000</a>
+            <a href="tel:+27792618265" aria-label="Call Blaqrock on +27 79 261 8265">+27 79 261 8265</a><br />
+            <a href="tel:+27613269699" aria-label="Call Blaqrock on +27 61 326 9699">+27 61 326 9699</a>
+            <p>Ask for Steve, your host · <a href="https://wa.me/27792618265?text=Hello%20Steve%2C%20I%27d%20like%20to%20book%20a%20transport%20service." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon" aria-hidden="true">📧</div>
           <div class="contact-detail">
             <h4>Email Address</h4>
-            <!-- PLACEHOLDER: Replace with your actual email -->
-            <a href="mailto:info@blaqrock.co.za" aria-label="Email Blaqrock at info@blaqrock.co.za">info@blaqrock.co.za</a>
+            <a href="mailto:bookings@blaqrockshuttle.co.za?subject=Booking%20Enquiry" aria-label="Email Blaqrock at bookings@blaqrockshuttle.co.za">bookings@blaqrockshuttle.co.za</a>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon" aria-hidden="true">📍</div>
           <div class="contact-detail">
             <h4>Based In</h4>
-            <!-- PLACEHOLDER: Replace with your actual location -->
-            <p>South Africa &nbsp;·&nbsp; Nationwide Service</p>
+            <p>20 Oxford Rd, Hout Bay, Cape Town</p>
+            <p>Nationwide Service across South Africa</p>
           </div>
         </div>
         <div class="contact-item">
@@ -1153,7 +1182,7 @@
           </div>
           <div class="form-group">
             <label for="phone">WhatsApp / Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+27 00 000 0000" autocomplete="tel" />
+            <input type="tel" id="phone" name="phone" placeholder="+27 82 123 4567" autocomplete="tel" />
           </div>
         </div>
         <div class="form-group">
@@ -1185,10 +1214,17 @@
           <label for="message">Additional Details</label>
           <textarea id="message" name="message" placeholder="Pickup location, destination, flight number, any special requirements…"></textarea>
         </div>
-        <button type="submit" class="btn-primary form-submit" style="width: 100%; justify-content: center;">
-          <span>Send Booking Enquiry</span>
-          <span aria-hidden="true">→</span>
-        </button>
+        <div class="form-actions">
+          <button type="submit" value="email" class="btn-primary form-submit">
+            <span>Send by Email</span>
+            <span aria-hidden="true">✉</span>
+          </button>
+          <button type="submit" value="whatsapp" class="form-submit btn-whatsapp">
+            <span>Send on WhatsApp</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -1198,7 +1234,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="Blaqrock logo1 (1).png" alt="Blaqrock Shuttle &amp; Tours" width="208" height="64" />
+      <img src="blaqrock-logo.png" alt="Blaqrock Shuttle &amp; Tours" width="197" height="60" />
       <p>Premium shuttle and tour services across South Africa. We deliver comfort, reliability and class — every single journey, without exception.</p>
       <div class="social-links" aria-label="Social media links">
         <!-- PLACEHOLDER: Replace # with your actual social profile URLs -->
@@ -1229,10 +1265,10 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <!-- PLACEHOLDER: Replace with your actual contact details -->
-        <li><a href="tel:+27000000000">+27 00 000 0000</a></li>
-        <li><a href="mailto:info@blaqrock.co.za">info@blaqrock.co.za</a></li>
-        <li><a href="#contact">South Africa</a></li>
+        <li><a href="tel:+27792618265">+27 79 261 8265</a></li>
+        <li><a href="tel:+27613269699">+27 61 326 9699</a></li>
+        <li><a href="mailto:bookings@blaqrockshuttle.co.za?subject=Booking%20Enquiry">bookings@blaqrockshuttle.co.za</a></li>
+        <li><a href="#contact">20 Oxford Rd, Hout Bay, Cape Town</a></li>
         <li><a href="#contact">24/7 Available</a></li>
       </ul>
     </div>
@@ -1244,8 +1280,7 @@
 </footer>
 
 <!-- ════════════════════ WHATSAPP FLOAT ════════════════════ -->
-<!-- PLACEHOLDER: Replace 27000000000 with your actual WhatsApp number (country code + number, no +) -->
-<a href="https://wa.me/27000000000?text=Hello%20Blaqrock%2C%20I%27d%20like%20to%20book%20a%20transport%20service."
+<a href="https://wa.me/27792618265?text=Hello%20Steve%2C%20I%27d%20like%20to%20book%20a%20transport%20service."
    class="wa-float"
    target="_blank"
    rel="noopener noreferrer"
@@ -1314,6 +1349,56 @@
   }, { threshold: 0.5 });
 
   document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+  /* ─── Booking form → Email or WhatsApp ─── */
+  const BOOKING_EMAIL    = 'bookings@blaqrockshuttle.co.za';
+  const BOOKING_WHATSAPP = '27792618265'; // Steve — country code + number, no +
+  const bookingForm = document.querySelector('.contact-form');
+  const formStatus  = document.getElementById('formStatus');
+
+  bookingForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const channel = (e.submitter && e.submitter.value) || 'email';
+    const f = bookingForm.elements;
+    const name  = f.name.value.trim();
+    const email = f.email.value.trim();
+
+    formStatus.classList.remove('error');
+    if (!name || (channel === 'email' && !email)) {
+      formStatus.textContent = channel === 'email'
+        ? 'Please enter your name and email address.'
+        : 'Please enter your name.';
+      formStatus.classList.add('error');
+      (name ? f.email : f.name).focus();
+      return;
+    }
+
+    const service = f.service.value ? f.service.options[f.service.selectedIndex].text : 'Not specified';
+    const lines = [
+      'Hello Steve, I would like to make a booking enquiry.',
+      '',
+      'Name: ' + name,
+      'Phone: ' + (f.phone.value.trim() || '-'),
+      'Email: ' + (email || '-'),
+      'Service: ' + service,
+      'Travel date: ' + (f.date.value || '-'),
+      'Passengers: ' + (f.passengers.value || '-'),
+      '',
+      'Details: ' + (f.message.value.trim() || '-')
+    ];
+    const text = lines.join('\n');
+
+    if (channel === 'whatsapp') {
+      window.open('https://wa.me/' + BOOKING_WHATSAPP + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      formStatus.textContent = 'Opening WhatsApp — just press send to reach Steve.';
+    } else {
+      const subject = 'Booking Enquiry – ' + service + ' – ' + name;
+      window.location.href = 'mailto:' + BOOKING_EMAIL +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(text);
+      formStatus.textContent = 'Opening your email app — just press send. Or email us directly at ' + BOOKING_EMAIL + '.';
+    }
+  });
 
   /* ─── Smooth anchor scroll ─── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
