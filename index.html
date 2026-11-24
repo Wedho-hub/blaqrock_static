@@ -210,6 +210,8 @@
       --max-w:      1200px;
       --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+      /* side gutter — respects notches / rounded screen edges */
+      --gutter:     max(24px, env(safe-area-inset-left), env(safe-area-inset-right));
     }
 
     /* ═══════════ RESET & BASE ═══════════ */
@@ -228,7 +230,7 @@
     ul { list-style: none; }
     section { padding: 100px 0; }
 
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
 
     /* ═══════════ TYPOGRAPHY ═══════════ */
     .section-tag {
@@ -1076,7 +1078,8 @@
         display: flex; overflow-x: auto; gap: 10px;
         scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
         -webkit-overflow-scrolling: touch; scrollbar-width: none;
-        margin: 0 -24px; padding: 0 24px;
+        margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter);
+        scroll-padding: 0 var(--gutter);
       }
       .flagship-gallery::-webkit-scrollbar { display: none; }
       .flagship-gallery figure,
@@ -1092,11 +1095,124 @@
       .gallery-dots button[aria-current="true"] { width: 24px; background: var(--gold); }
       .flagship-specs { grid-template-columns: 1fr; }
     }
+    /* ═══════════ PHONES — proportion, spacing & centring ═══════════ */
+    @media (max-width: 640px) {
+      :root { --gutter: max(20px, env(safe-area-inset-left), env(safe-area-inset-right)); }
+      html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      /* Stop sideways wobble on Android: nothing may slide in from off-screen */
+      html, body { overflow-x: hidden; }
+      @supports (overflow: clip) { html, body { overflow-x: clip; } }
+      .js [data-reveal="left"], .js [data-reveal="right"] { transform: translate3d(0, 32px, 0); }
+      .js [data-reveal].revealed { transform: none; }
+      section { padding: 64px 0; }
+      section[id] { scroll-margin-top: 72px; }
+
+      /* Nav */
+      .nav { padding: 14px 0; }
+      .nav.scrolled { padding: 8px 0; }
+      .nav-inner { padding: 0 var(--gutter); }
+      .nav-logo { padding: 6px 12px; border-radius: 8px; }
+      .nav-logo img { height: 40px; }
+      .nav.scrolled .nav-logo { padding: 5px 10px; }
+      .nav.scrolled .nav-logo img { height: 34px; }
+      .nav-hamburger { padding: 12px; margin-right: -12px; }   /* 48px tap target */
+
+      /* Hero: fits the visible screen (no address-bar jump), never clips content */
+      .hero {
+        height: auto; min-height: 100vh; min-height: 100svh;
+        padding: 108px 0 96px;
+      }
+      .hero-content { padding: 0 var(--gutter); width: 100%; }
+      .hero h1 { font-size: clamp(2rem, 9vw, 2.5rem); margin-bottom: 18px; }
+      .hero h1 .hero-eyebrow { margin-bottom: 16px; }
+      .hero-sub { font-size: 0.95rem; line-height: 1.75; margin-bottom: 30px; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; max-width: 320px; margin: 0 auto; }
+      .hero-actions a { justify-content: center; padding-left: 20px; padding-right: 20px; }
+      .hero-scroll { bottom: 24px; }
+
+      /* Stats: compact 2 × 2 tiles */
+      .stat-item { padding: 30px 12px; }
+      .stat-number { font-size: 2.3rem; margin-bottom: 6px; }
+      .stat-label { font-size: 0.64rem; letter-spacing: 1.8px; }
+
+      /* Every section heading centred for a balanced layout */
+      .section-header, .about-text, .flagship-info, .contact-grid > div:first-child { text-align: center; }
+      .section-header { margin-bottom: 40px; }
+      .gold-line { margin: 16px auto; }
+      .section-sub { margin-left: auto; margin-right: auto; font-size: 0.95rem; }
+      .section-heading { font-size: clamp(1.7rem, 7.5vw, 2.1rem); }
+
+      /* Services */
+      .service-img { height: 190px; }
+      .service-body { padding: 26px 22px 28px; }
+
+      /* Fleet & flagship */
+      .flagship { margin-top: 0; gap: 28px; }
+      .flagship-info > p { max-width: 480px; margin-left: auto; margin-right: auto; }
+      .flagship-specs { text-align: left; max-width: 320px; margin: 0 auto 28px; }
+      .flagship-info .btn-primary { display: flex; justify-content: center; max-width: 320px; margin: 0 auto; }
+      .fleet-subheading { margin-top: 56px; text-align: center; }
+      .fleet-grid { margin-top: 24px !important; gap: 16px; }
+      .fleet-card { border-radius: 6px; }
+
+      /* About: badge stays inside the screen, image proportioned for phones */
+      .about-grid { gap: 44px; }
+      .about-img-wrap { padding: 14px 0 20px 14px; margin: 0 auto; width: 100%; }
+      .about-img-decor { width: calc(100% - 14px); height: calc(100% - 14px); }
+      .about-img-wrap img { height: auto; aspect-ratio: 4 / 3; }
+      .about-badge { right: 10px; bottom: 6px; width: 92px; height: 92px; }
+      .about-badge strong { font-size: 1.7rem; }
+      .about-badge span { font-size: 0.56rem; letter-spacing: 1px; }
+      .about-features { text-align: left; max-width: 420px; margin: 32px auto 0; gap: 20px; }
+      .feature-icon { width: 44px; height: 44px; }
+
+      /* Testimonials: tighter cards, no empty gaps */
+      .testimonials-grid { margin-top: 0; gap: 16px; }
+      .testimonial-card { padding: 28px 22px; }
+      .quote-mark { font-size: 4rem; margin-bottom: 4px; }
+      .testimonial-text { font-size: 0.92rem; line-height: 1.75; margin-bottom: 20px; }
+
+      /* FAQ */
+      .faq-list { margin-top: 0; }
+      .faq-item summary { padding: 18px 0; font-size: 0.95rem; }
+      .faq-answer p { padding: 0 0 20px; }
+
+      /* CTA banner */
+      .cta-inner { padding: 64px var(--gutter); gap: 28px; }
+      .cta-inner .btn-primary { padding: 18px 34px !important; }
+
+      /* Contact */
+      .contact-grid { gap: 40px; }
+      .contact-grid .section-sub { margin-bottom: 32px !important; }
+      .contact-grid > div:first-child .contact-item { text-align: left; max-width: 400px; margin: 0 auto 24px; }
+      .contact-icon { width: 46px; height: 46px; }
+      /* 16px inputs stop phones from zooming in when a field is tapped */
+      .form-group input, .form-group select, .form-group textarea { font-size: 16px; padding: 14px 16px; border-radius: 4px; }
+      .form-group select { background-image: linear-gradient(45deg, transparent 50%, var(--gray) 50%), linear-gradient(135deg, var(--gray) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+      .form-actions .form-submit { min-height: 52px; }
+
+      /* Footer: centred and evenly spaced */
+      .footer-top { padding: 56px var(--gutter) 36px; text-align: center; }
+      .footer-brand img { margin: 0 auto 20px; }
+      .footer-brand p { max-width: 360px; margin-left: auto; margin-right: auto; }
+      .social-links { justify-content: center; }
+      .social-link { width: 44px; height: 44px; border-radius: 50%; }
+      .footer-col h4 { margin-bottom: 14px; }
+      .footer-col ul { gap: 10px; align-items: center; }
+      .footer-bottom { padding: 22px var(--gutter) calc(22px + env(safe-area-inset-bottom)); }
+
+      /* WhatsApp button clear of the home bar */
+      .wa-float { width: 54px; height: 54px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
+      .wa-float svg { width: 27px; height: 27px; }
+    }
+    @media (max-width: 360px) {
+      :root { --gutter: 16px; }
+      .stat-label { letter-spacing: 1.2px; }
+      .hero h1 .hero-eyebrow::before, .hero h1 .hero-eyebrow::after { display: none; }
+    }
     @media (max-width: 520px) {
       .fleet-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; gap: 36px; }
-      .hero h1 { font-size: 2.2rem; }
-      .wa-float { bottom: 20px; right: 20px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
       .wa-tooltip { display: none; }
     }
   </style>
