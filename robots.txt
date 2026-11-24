@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.blaqrockshuttle.co.za/sitemap.xml
+Sitemap: https://blaqrockshuttle.co.za/sitemap.xml
